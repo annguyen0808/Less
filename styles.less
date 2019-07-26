@@ -1,0 +1,133 @@
+p{
+color:red;
+}
+@color:blue;
+@primarycolor:black;
+@background:pink;
+@widthHeader:200px;
+@heightHeader:300px;
+@fontsize:10px;
+h1 {
+   color: @primarycolor;
+}
+
+h3 {
+   color: @color;
+}
+
+.header{
+  background:@background;
+  width:@widthHeader;
+  height:@heightHeader;
+  color:@color;
+	
+}
+
+.container{
+	h1{
+		font-size:25px;
+		color:#E45456;
+	}
+
+	
+}
+.myclass{
+		
+		@media screen{
+			color:blue;
+			@media(min-width:1024px){
+				color:green;
+				font-size:@fontsize * 5;
+			}
+		}
+		@media mytext{
+			color:black;
+		}
+	}
+span{
+	color:~"blue";
+	font-size:~"40px";
+
+}
+
+@var:@a;
+@a:15px;
+
+.myclass1{
+	font-size:@var;
+	@a:25px;
+	color:red;
+}
+
+.border(@width; @style; @color) {
+   border: @width @style @color;
+}
+
+.myheader {
+   .border(2px; dashed; green);
+}
+
+.mixin(){
+	@bgcolor:#C0C0C0;
+	@fontsize:20px;
+	
+}
+
+.myclass2{
+	.mixin();
+	background-color:@bgcolor;
+	font-size:@fontsize;
+	
+}
+
+.padding(@x,@y,@fontsize){
+	@padding:((@x+@y)/2);
+}
+.myclass3{
+	.padding(80px,120px,@fontsize);
+	padding-left:@padding;
+	font-size:@fontsize;
+
+}
+
+.outerMinxin(@value){
+	.nestedMixin(){
+	font-size:@value;
+	}
+}
+.myclass4{
+	.outerMinxin(30);
+	.nestedMixin();
+}
+
+@datached-ruleset:{
+	.mixin(){
+	font-family:"Comic Sans MS";
+	background-color:#AA86EE;
+	}
+}
+
+.cont{
+	@datached-ruleset();
+	.mixin();
+}
+
+.mixin(@a) when (lightness(@a) >=50%){
+	font-size:14px;
+}
+
+.mixin(@a) when(lightness(@a)<50%){
+	font-size:16px;
+}
+
+.mixin(@a){
+	color:@a;
+}
+
+.class1{
+	.mixin(#FF0000);
+}
+
+.class{
+	.mixin(#555);
+}
